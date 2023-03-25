@@ -20,6 +20,14 @@
     align-items: center;
 }
 
+.container__botao:checked~.container__rotulo>.cabecalho__menu-hamburguer {
+    background-image: url("../img/Menu Aberto.svg");
+}
+
+.container__botao:checked~.container__rotulo {
+    background: var(--azul-degrade);
+}
+
 .container__imagem {
     padding: 0.375rem;
 }
@@ -35,7 +43,7 @@
 * A pseudoclasse CHECKED verifica se o input esta ativo (onclick) e caso esteja o ~ vai buscar a proxima classe, nesse caso o lista-menu
 * e com isso adicionar o display block nela, funcionando como se fosse um IF, caso o input esteja checked busque a classe lista-menu e adicione display block
 */
-.container__botao:checked ~ .lista-menu {
+.container__botao:checked~.lista-menu {
     display: block;
 }
 
@@ -70,8 +78,14 @@
     display: none;
 }
 
+.container__texto {
+    display: none;
+}
+
 @media screen and (min-width: 64rem) {
-    .container__titulo, .container__titulo--negrito {
+
+    .container__titulo,
+    .container__titulo--negrito {
         font-family: var(--fonte-secundaria);
         font-size: 1.875rem;
     }
@@ -107,12 +121,51 @@
         display: none;
     }
 
-    .opcoes__botao:checked ~ .lista-menu {
+    .opcoes__botao:checked~.lista-menu {
         display: block;
         width: auto;
     }
 
     .opcoes__botao {
         display: none;
+    }
+
+    .opcoes__botao:checked~.opcoes__rotulo>.opcoes__item {
+        background: var(--azul-degrade);
+        color: var(--branco);
+    }
+
+    .opcoes__item {
+        padding: 2rem 1rem;
+    }
+
+    .lista-menu__item:hover {
+        background: var(--azul-degrade);
+    }
+
+    .lista-menu__item:hover>.lista-menu__link {
+        -webkit-text-fill-color: var(--branco);
+        text-decoration: none;
+    }
+}
+
+@media screen and (min-width: 108rem) {
+    .container__link {
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        color: var(--preto);
+    }
+
+    .cabecalho {
+        padding: 0 2rem;
+    }
+
+    .opcoes {
+        margin-right: auto;
+    }
+
+    .container__texto {
+        display: block;
     }
 }
